@@ -1,0 +1,11 @@
+.button-with-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.button-with-icon-title {
+  font-weight: 500;
+  letter-spacing: 0.02rem;
+}

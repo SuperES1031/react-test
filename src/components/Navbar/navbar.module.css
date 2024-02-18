@@ -1,0 +1,27 @@
+.navbar {
+  width: 100%;
+  background: var(--orange-to-pink-gradient);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  padding: 1.5rem 4rem;
+}
+
+.navbar-date {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1rem;
+}
+
+.navbar-date-value {
+  width: 13rem;
+  font-weight: 500;
+  font-size: 1.75rem;
+  color: var(--primary-black-color);
+  text-align: center;
+}

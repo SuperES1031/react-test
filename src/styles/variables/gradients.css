@@ -1,0 +1,3 @@
+:root {
+  --orange-to-pink-gradient: linear-gradient(to right, var(--primary-orange-color), var(--primary-pink-color));
+}

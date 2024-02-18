@@ -1,0 +1,16 @@
+.days-of-week {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15.8125rem, 1fr));
+  justify-content: flex-start;
+  align-items: center;
+  border-bottom: 0.0625rem solid var(--secondary-grey-color);
+  padding: 1.5rem 4rem;
+}
+
+.days-of-week-label {
+  font-weight: 500;
+  font-size: 1.125rem;
+  color: var(--primary-black-color);
+  letter-spacing: 0.02rem;
+}

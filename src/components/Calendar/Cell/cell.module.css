@@ -1,0 +1,16 @@
+.cell {
+  width: 100%;
+  background-color: var(--secondary-grey-color);
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.cell-day-number {
+  font-weight: 700;
+  font-size: 0.875rem;
+  color: var(--primary-black-color);
+}
