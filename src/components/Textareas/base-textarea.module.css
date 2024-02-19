@@ -1,0 +1,12 @@
+.base-textarea {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  color: var(--primary-black-color);
+  border: 0.0625rem solid var(--secondary-grey-color);
+  resize: none;
+}
+
+.base-textarea:focus {
+  border: 0.0625rem solid var(--primary-blue-color);
+}

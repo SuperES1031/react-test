@@ -1,22 +1,30 @@
-import { FC } from "react";
+import { FC, ReactNode } from "react";
 
 import styles from "./base-button.module.css";
 
 import { MouseEvent, ReactElement } from "react";
 
 type BaseButtonProps = {
+  width?: string;
+  height?: string;
   backgroundColor?: string;
   label?: string;
   labelColor?: string;
   labelSize?: string;
   icon?:  ReactElement | null;
   hasLabel?: boolean;
+  disabled?: boolean;
+  hasMenu?: boolean;
+  menuComponent?: ReactNode;
   padding?: string;
   borderRadius?: string;
+  distanceBetweenLabelAndIcon?: string;
   onClick?: (e: MouseEvent<HTMLButtonElement>) => void;
 };
 
-const BaseButton: FC<BaseButtonProps> = ({ 
+const BaseButton: FC<BaseButtonProps> = ({
+  width,
+  height,
   backgroundColor = "inherit",
   label = "",
   icon = null,
@@ -25,22 +33,30 @@ const BaseButton: FC<BaseButtonProps> = ({
   padding = "0.75rem 1.5rem",
   borderRadius,
   hasLabel = true,
-  onClick
+  hasMenu = false,
+  menuComponent,
+  disabled = false,
+  distanceBetweenLabelAndIcon = "0.5rem",
+  onClick,
 }) => {
   return (
     <button
-      className={styles["button-with-icon"]}
+      className={styles["base-button"]}
       style={{
+        width,
+        height,
         background: backgroundColor,
         padding,
-        borderRadius
+        borderRadius,
+        gap: distanceBetweenLabelAndIcon
       }}
+      disabled={disabled}
       onClick={onClick}
     >
       {icon}
       {hasLabel && (
         <span
-          className={styles["button-with-icon-title"]}
+          className={styles["base-button-label"]}
           style={{
             color: labelColor,
             fontSize: labelSize
@@ -49,6 +65,7 @@ const BaseButton: FC<BaseButtonProps> = ({
           {label}
         </span>
       )}
+      {hasMenu && menuComponent}
     </button>
   );
 };

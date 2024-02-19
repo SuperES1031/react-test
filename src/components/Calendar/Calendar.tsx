@@ -1,18 +1,16 @@
-import { Dayjs } from "dayjs";
 import { FC } from "react";
 
 import styles from "./calendar.module.css";
-import DaysOfWeek from "./DaysOfWeek/DaysOfWeek";
 import Grid from "./Grid/Grid";
+import type { Days } from "@/types/day.type";
 
 type CalendarProps = {
-  days: Dayjs[];
+  days: Days;
 };
 
 const Calendar: FC<CalendarProps> = ({ days }) => {
   return (
     <div className={styles["calendar"]}>
-      <DaysOfWeek />
       <Grid 
         days={days}
       />

@@ -1,17 +1,16 @@
 import { FC } from "react";
 
-import { Dayjs } from "dayjs";
-
 import styles from "./grid.module.css";
 import Cell from "../Cell/Cell";
+import type { Days } from "@/types/day.type";
 
 type GridProps = {
-  days: Dayjs[];
+  days: Days;
 };
 
 const Grid: FC<GridProps> = ({ days }) => {
   const getFirstDayOfMonth = (dayIndex: number) => {    
-    if (dayIndex === 0) return days[0].day() + 1;
+    if (dayIndex === 0) return days[0].monthDay.day() + 1;
   };
 
   return (
@@ -20,9 +19,9 @@ const Grid: FC<GridProps> = ({ days }) => {
         days.map((day, dayIndex) => {
           return (
             <Cell
-              key={dayIndex}
+              key={day.id}
               firstDayOfMonth={getFirstDayOfMonth(dayIndex)}
-              day={day}
+              {...day}
             />
           );
         })

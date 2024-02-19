@@ -4,5 +4,5 @@
   display: grid;
   gap: 0.5rem;
   grid-template-columns: repeat(auto-fit, minmax(13.5625rem, 1fr));
-  grid-template-rows: repeat(5, auto);
+  grid-template-rows: repeat(5, minmax(13.125rem, auto));
 }

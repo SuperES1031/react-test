@@ -1,0 +1,11 @@
+.base-input {
+  width: 100%;
+  padding: 0.5rem 1.25rem;
+  font-size: 1.125rem;
+  color: var(--primary-black-color);
+  border: 0.0625rem solid var(--secondary-grey-color);
+}
+
+.base-input:focus {
+  border: 0.0625rem solid var(--primary-blue-color);
+}

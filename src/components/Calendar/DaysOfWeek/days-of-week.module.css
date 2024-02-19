@@ -6,6 +6,7 @@
   align-items: center;
   border-bottom: 0.0625rem solid var(--secondary-grey-color);
   padding: 1.5rem 4rem;
+  background-color: var(--primary-grey-color);
 }
 
 .days-of-week-label {
@@ -13,4 +14,5 @@
   font-size: 1.125rem;
   color: var(--primary-black-color);
   letter-spacing: 0.02rem;
+  text-align: center;
 }

@@ -5,6 +5,10 @@
   --primary-black-color: #37393A;
   --primary-blue-color: #016FB9;
   --primary-pink-color: #EC0868;
+  --primary-green-color: #018E42;
+  --primary-red-color: #BF1A2F;
 
   --secondary-grey-color: #B7B6C1;
+
+  --opacity-secondary-grey-color: rgba(183, 182, 193, 0.25);
 }
