@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC } from "react";
 
 import styles from "./task.module.css";
 import { useTaskStore } from "@/store/task";
@@ -9,13 +9,13 @@ import type { Task } from "@/types/task.type";
 // import BaseButton from "@/components/Buttons/BaseButton/BaseButton";
 
 // import { MdModeEditOutline } from "react-icons/md";
-import BaseTextarea from "@/components/Textareas/BaseTextarea";
+// import BaseTextarea from "@/components/Textareas/BaseTextarea";
 
 const TaskCard: FC<Task> = ({ id, name, colors, types }) => {
-  const [isEditTask, setIsEditTask] = useState(false);
+  // const [isEditTask, setIsEditTask] = useState(false);
   
-  const [updatedTaskName, setUpdatedTaskName] = useState("");
-  const [updatedColors, setUpdatedColors] = useState<string[]>([]);
+  // const [updatedTaskName, setUpdatedTaskName] = useState("");
+  // const [updatedColors, setUpdatedColors] = useState<string[]>([]);
 
   const {   
     getActiveDraggableTask,
@@ -53,7 +53,7 @@ const TaskCard: FC<Task> = ({ id, name, colors, types }) => {
             </div>
             <Label type={types[0]} />
           </div>
-          {
+          {/* {
             isEditTask ? (
               <BaseTextarea 
                 value={updatedTaskName}
@@ -68,7 +68,10 @@ const TaskCard: FC<Task> = ({ id, name, colors, types }) => {
                 {name}
               </span>
             )
-          }
+          } */}
+          <span className={styles["task-card-name"]}>
+            {name}
+          </span>
           {/* <div className={styles["task-card-actions"]}>
             {
               isEditTask ? (
