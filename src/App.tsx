@@ -1,7 +1,7 @@
 import Navbar from "./components/Navbar/Navbar";
 import BaseLayout from "./layouts/BaseLayout/BaseLayout";
 
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo, useEffect, useRef } from "react";
 
 import dayjs from "dayjs";
 import Calendar from "./components/Calendar/Calendar";
@@ -11,10 +11,11 @@ import { v4 as uuidv4 } from "uuid";
 import DaysOfWeek from "./components/Calendar/DaysOfWeek/DaysOfWeek";
 import { useCurrentDateStore } from "./store/currentDate";
 import { useTaskStore } from "./store/task";
-import { DndContext, DragEndEvent } from "@dnd-kit/core";
+import { DndContext, DragEndEvent, useSensor, useSensors, MouseSensor } from "@dnd-kit/core";
 
 function App() {
   const [search, setSearch] = useState("");
+  const downloadJPGRef = useRef<HTMLDivElement>(null);
 
   const {
     tasks,
@@ -73,7 +74,16 @@ function App() {
         reorderTasks(active.id as string, over?.id as string) : 
         moveTask(active.id, over?.data.current?.date)
     );
-  }
+  };
+
+  const sensors = useSensors(
+    useSensor(MouseSensor, {
+      activationConstraint: {
+        delay: 75,
+        tolerance: Math.pow(10, 10_000)
+      }
+    })
+  );
 
   return (
     <BaseLayout>
@@ -86,6 +96,7 @@ function App() {
       }}>
         <Navbar
           search={search}
+          ref={downloadJPGRef}
           currentDate={formattedCurrentDate("MMMM YYYY")}
           onChange={(e) => setSearch(e.target.value)}
           handleNextMonth={handleNextMonth}
@@ -93,8 +104,9 @@ function App() {
         />
         <DaysOfWeek />
       </div>
-      <DndContext onDragEnd={handleDragEnd}>
+      <DndContext sensors={sensors} onDragEnd={handleDragEnd} onDragStart={() => false}>
         <Calendar
+          ref={downloadJPGRef}
           days={days}
         />
       </DndContext>

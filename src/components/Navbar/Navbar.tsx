@@ -1,10 +1,9 @@
-import { FC, MouseEvent, ChangeEvent, useState } from "react";
+import { FC, MouseEvent, ChangeEvent, useState, forwardRef, RefObject } from "react";
 
 import styles from "./navbar.module.css";
 import BaseButton from "../Buttons/BaseButton/BaseButton";
 
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-// import { MdFilterListAlt } from "react-icons/md";
 
 import { MdDownload } from "react-icons/md";
 import BaseInput from "../Inputs/BaseInput/BaseInput";
@@ -16,16 +15,19 @@ type NavbarProps = {
   handleNextMonth: (e: MouseEvent<HTMLButtonElement>) => void;
   handlePreviousMonth: (e: MouseEvent<HTMLButtonElement>) => void;
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
+  ref?: ((instance: HTMLDivElement | null) => void) | RefObject<HTMLDivElement> | null;
 }
 
-const Navbar: FC<NavbarProps> = ({
+const Navbar: FC<NavbarProps> = forwardRef<HTMLDivElement, NavbarProps>(({
   currentDate,
   search,
   handleNextMonth, 
   handlePreviousMonth,
   onChange
-}) => {
+}, ref) => {
   const [showDownloadMenu, setShowDownloadMenu] = useState(false);
+
+  const divRef = ref as RefObject<HTMLDivElement>;
 
   return (
     <div className={styles["navbar"]}>
@@ -60,22 +62,13 @@ const Navbar: FC<NavbarProps> = ({
         />
       </div>
       <div className={styles["navbar-actions"]}>
-        {/* <BaseButton
-          backgroundColor="var(--primary-white-color)"
-          hasLabel
-          label="Filters"
-          labelColor="var(--primary-black-color)"
-          labelSize="1rem"
-          borderRadius="0.25rem"
-          padding="0.75rem"
-          icon={<MdFilterListAlt size="1.5rem" color="var(--primary-black-color)" />}
-        /> */}
         <BaseButton
           backgroundColor="var(--primary-white-color)"
           hasLabel
           hasMenu
           menuComponent={
             <DownloadMenu
+              ref={divRef}
               show={showDownloadMenu}
               top="3.5rem"
               left="-2.5rem"
@@ -92,6 +85,6 @@ const Navbar: FC<NavbarProps> = ({
       </div>
     </div>
   );
-};
+});
 
 export default Navbar;

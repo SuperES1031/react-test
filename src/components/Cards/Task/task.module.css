@@ -17,6 +17,12 @@
   align-items: flex-start;
 }
 
+.task-card-heading-no-colors {
+  font-weight: 500;
+  font-size: 0.75rem;
+  color: var(--secondary-grey-color);
+}
+
 .task-card-heading-colors {
   display: flex;
   justify-content: flex-start;
